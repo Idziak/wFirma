@@ -58,7 +58,7 @@ final class Payment
     /**
      * @param PaymentMethod $paymentMethod
      * @param \DateTime|null $paymentDate
-     * @param null $alreadyPaidInitial
+     * @param ?float $alreadyPaidInitial
      * @return Payment
      */
     public static function create(

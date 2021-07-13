@@ -513,6 +513,22 @@ final class Invoice extends DateAwareEntity
     private $seriesId;
 
     /**
+     * @var InvoiceId
+     * @JMS\SerializedName("order")
+     * @JMS\Type("Webit\WFirmaSDK\Invoices\InvoiceId")
+     * @JMS\Groups({"request", "response"})
+     */
+    private $orderId;
+
+    /**
+     * @var InvoiceId
+     * @JMS\SerializedName("parent")
+     * @JMS\Type("Webit\WFirmaSDK\Invoices\InvoiceId")
+     * @JMS\Groups({"request", "response"})
+     */
+    private $parentId;
+
+    /**
      * Invoice constructor.
      * @param Contractor $contractor
      * @param Payment $payment
@@ -910,6 +926,11 @@ final class Invoice extends DateAwareEntity
         return $this;
     }
 
+    public function type(): Type
+    {
+        return Type::fromString($this->type);
+    }
+
     /**
      * @return int
      */
@@ -924,6 +945,36 @@ final class Invoice extends DateAwareEntity
     public function hash()
     {
         return $this->hash;
+    }
+
+    public function idExternal(): string
+    {
+        return $this->idExternal;
+    }
+
+    public function changeIdExternal(string $idExternal)
+    {
+        $this->idExternal = $idExternal;
+    }
+
+    public function parent(): ?InvoiceId
+    {
+        return $this->parentId;
+    }
+
+    public function changeParent(?InvoiceId $invoiceId): void
+    {
+        $this->parentId = $invoiceId;
+    }
+
+    public function order(): ?InvoiceId
+    {
+        return $this->parentId;
+    }
+
+    public function changeOrder(?InvoiceId $invoiceId): void
+    {
+        $this->orderId = $invoiceId;
     }
 
     /**
@@ -1035,6 +1086,16 @@ final class Invoice extends DateAwareEntity
         $this->autoSendPostivo = (int)$autoSend->isPostivoEnabled();
         $this->autoSms = (int)$autoSend->isSmsEnabled();
         return $this;
+    }
+
+    public function description():string
+    {
+        return $this->description;
+    }
+
+    public function changeDescription(string $description)
+    {
+        $this->description = $description;
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace Webit\WFirmaSDK\Invoices;
 
+use function GuzzleHttp\Psr7\str;
+
 final class Type
 {
     /** @var string */
@@ -119,6 +121,11 @@ final class Type
     public static function fromString($type)
     {
         return new self($type);
+    }
+
+    public function isEqual(Type $type)
+    {
+        return (string) $this->type === (string) $type;
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace Webit\WFirmaSDK\Invoices;
 
+use Webit\WFirmaSDK\Contractors\Contractor;
 use Webit\WFirmaSDK\Entity\EntityApi;
+use Webit\WFirmaSDK\Entity\Parameters\Parameters;
 use Webit\WFirmaSDK\Module;
 use Webit\WFirmaSDK\Entity\Entity;
 
@@ -43,6 +45,25 @@ class InvoicesApi
     public function delete(InvoiceId $id)
     {
         $this->entityApi->delete($id->id(), Module::invoices());
+    }
+
+
+    /**
+     * @param Parameters|null $parameters
+     * @return \Webit\WFirmaSDK\Entity\Entity[]|Invoice[]
+     */
+    public function find(Parameters $parameters = null)
+    {
+        return $this->entityApi->find(Module::invoices(), $parameters);
+    }
+
+    /**
+     * @param Parameters|null $parameters
+     * @return \Webit\WFirmaSDK\Entity\Entity[]|\Webit\WFirmaSDK\Entity\EntityIterator|Invoice[]
+     */
+    public function findAll(Parameters $parameters = null)
+    {
+        return $this->entityApi->findAll(Module::invoices(), $parameters);
     }
 
     /**
