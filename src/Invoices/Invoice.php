@@ -400,7 +400,7 @@ final class Invoice extends DateAwareEntity
     /**
      * @var int
      * @JMS\Type("integer")
-     * @JMS\SerializedName("schema_canceled")
+     * @JMS\SerializedName("schema_cancelled")
      * @JMS\XmlElement(cdata=false)
      * @JMS\Groups({"request", "response"})
      */
@@ -945,6 +945,14 @@ final class Invoice extends DateAwareEntity
     public function hash()
     {
         return $this->hash;
+    }
+
+    /**
+     * @return int
+     */
+    public function schemaCancelled(): int
+    {
+        return $this->schemaCanceled;
     }
 
     public function idExternal(): string

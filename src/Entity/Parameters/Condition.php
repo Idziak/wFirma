@@ -13,6 +13,7 @@ final class Condition implements \Webit\WFirmaSDK\Entity\Condition
      * @var string
      * @JMS\SerializedName("field")
      * @JMS\Type("string")
+     * @JMS\XmlElement(cdata=false)
      * @JMS\Groups({"findRequest"})
      */
     private $field;
@@ -20,6 +21,7 @@ final class Condition implements \Webit\WFirmaSDK\Entity\Condition
      * @var string
      * @JMS\SerializedName("operator")
      * @JMS\Type("string")
+     * @JMS\XmlElement(cdata=false)
      * @JMS\Groups({"findRequest"})
      */
     private $operator;
@@ -27,6 +29,7 @@ final class Condition implements \Webit\WFirmaSDK\Entity\Condition
      * @var string
      * @JMS\SerializedName("value")
      * @JMS\Type("string")
+     * @JMS\XmlElement(cdata=false)
      * @JMS\Groups({"findRequest"})
      */
     private $value;
